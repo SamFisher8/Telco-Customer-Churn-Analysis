@@ -110,3 +110,81 @@ The following quality checks and transformations were applied:
 **Sameen Sadman**
 Data Engineer (Internship Project)
 
+
+### Categorical Feature Encoding (Stage 4)
+
+#### Objective
+Machine learning models such as **K-Means Clustering** and **Artificial Neural Networks (ANNs)** require numerical inputs. This stage converts all categorical (object-type) variables in the cleaned dataset into numeric representations while preserving semantic meaning and avoiding unintended ordinal relationships.
+
+The output of this stage is a fully numeric dataset ready for modeling.
+
+---
+
+#### Encoding Strategy Overview
+
+The dataset primarily contains **binary** and **ordinal** categorical variables. To maintain interpretability and model correctness, the following encoding strategies were applied:
+
+| Feature Type | Encoding Method | Rationale |
+|-------------|----------------|-----------|
+| Target Variable | Manual Binary Mapping | Ensures correct positive class definition |
+| Ordinal Features | Manual Mapping | Preserves logical ordering |
+| Binary Features | Label Encoding | Compact and semantically safe |
+| Nominal Features | Not applicable | Dataset does not contain high-cardinality nominal variables |
+
+---
+
+#### Manual Encoding (Critical Variables)
+
+Manual mappings were applied to prevent incorrect alphabetical ordering from automatic encoders.
+
+**Contract (Ordinal Feature)**  
+Represents increasing contract commitment:
+
+| Original Value | Encoded Value |
+|---------------|--------------|
+| Month-to-month | 0 |
+| One year | 1 |
+| Two year | 2 |
+
+**Churn (Target Variable)**  
+Defines churned customers as the positive class:
+
+| Original Value | Encoded Value |
+|---------------|--------------|
+| No | 0 |
+| Yes | 1 |
+
+This encoding ensures compatibility with ANN loss functions and evaluation metrics.
+
+---
+
+#### Label Encoding (Binary Predictors)
+
+Binary categorical variables were encoded using label encoding, resulting in values `{0, 1}`:
+
+- `gender`
+- `Partner`
+- `Dependents`
+- `PhoneService`
+- `MultipleLines`
+- `InternetService`
+
+Label encoding is appropriate here because these variables have only two possible states and do not introduce misleading ordinal relationships.
+
+---
+
+#### Validation and Quality Assurance
+
+Post-encoding checks were performed to ensure data integrity:
+
+- All columns are numeric (`int` or `float`)
+- No missing values (`NaN`) were introduced
+- Ordinal hierarchy and target mapping were verified
+- Encoded distributions were sanity-checked using value counts
+
+---
+
+#### Output Artifact
+
+The final encoded dataset is stored as:
+
