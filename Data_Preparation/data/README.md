@@ -188,3 +188,38 @@ Post-encoding checks were performed to ensure data integrity:
 
 The final encoded dataset is stored as: Dataset_Encoded_v1.csv
 
+
+## Class Imbalance Handling (US-2.5)
+
+The dataset contains a significant class imbalance in the target variable Churn, where the majority of customers do not churn. If left unaddressed, machine learning models may become biased toward predicting the majority class.
+
+### Observed Distribution (Before Balancing)
+
+No Churn (0): 5,174 records  
+Churn (1): 1,869 records  
+
+### Applied Technique: SMOTE
+
+Synthetic Minority Over-sampling Technique (SMOTE) was applied exclusively to the training dataset.
+
+Key design decisions:
+- SMOTE was applied after feature encoding
+- SMOTE was applied after the train/test split
+- The testing set was not modified to preserve real-world data distribution and prevent data leakage
+
+### Training Set Distribution
+
+Before SMOTE:
+Churn = 0 -> 3,959  
+Churn = 1 -> 1,433  
+
+After SMOTE:
+Churn = 0 -> 3,959  
+Churn = 1 -> 3,959  
+
+This resulted in a balanced 50/50 class distribution for model training.
+
+### Rationale
+
+Balancing the training data improves the model’s ability to correctly identify churned customers while maintaining a realistic evaluation environment using the original test data.
+
