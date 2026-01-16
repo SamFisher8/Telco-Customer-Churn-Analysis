@@ -119,6 +119,78 @@ Machine learning models such as **K-Means Clustering** and **Artificial Neural N
 The output of this stage is a fully numeric dataset ready for modeling.
 
 ---
+#### Xinyun Dai — US-2.3 (Encoding Rules: Target / Ordinal / Binary)
+
+This subsection records *how* I decided the encoding rules , so the team can follow the same standard during implementation and modelling.
+
+---
+
+##### How I approached the task (step-by-step)
+
+1) **Started from the dataset link in Confluence**  
+I opened the dataset from our Confluence project space (Data Preparation section) and focused on the columns related to feature encoding for US-2.3.
+
+2) **Checked each relevant column and confirmed the number of categories**  
+For each candidate column, I inspected its unique values to determine whether it is:
+- a **target label** (to be predicted),
+- an **ordinal feature** (natural ordering), or
+- a **binary predictor** (two categories only).
+
+Example checks:
+- `Churn` → target label with `Yes/No`
+- `Contract` → ordinal with `Month-to-month / One year / Two year`
+- `gender`, `Partner`, `Dependents`, `PhoneService` → binary (two categories)
+
+3) **Selected the encoding method based on the category type**  
+- **Target label** → define a clear 0/1 mapping, with positive class = 1  
+- **Ordinal feature** → use 0/1/2 mapping to preserve natural order  
+- **Binary feature** → use standard 0/1 label encoding (no need for one-hot)
+
+---
+
+##### Final encoding standards (agreed rules)
+
+**1) Target variable — `Churn`**
+- Original values: `Yes`, `No`
+- Mapping: **Yes = 1, No = 0**
+- Note: Positive class is kept as **1** to ensure consistent evaluation (precision/recall) across the team.
+
+**2) Ordinal feature (critical) — `Contract`**
+- Original values: `Month-to-month`, `One year`, `Two year`
+- Mapping:
+  - **Month-to-month = 0**
+  - **One year = 1**
+  - **Two year = 2**
+- Why: Contract length reflects increasing commitment, so ordinal encoding preserves the natural order.
+
+> Implementation reminder: `Contract` must be encoded using an explicit mapping dictionary (`map()`), not `LabelEncoder`, to avoid accidental alphabetical ordering.
+
+**3) Binary predictors — `gender`, `Partner`, `Dependents`, `PhoneService`**
+These columns were confirmed as binary (two categories only), so **0/1 label encoding** is sufficient and one-hot encoding is unnecessary.
+
+Fixed mapping convention:
+- `Partner`: **No = 0, Yes = 1**
+- `Dependents`: **No = 0, Yes = 1**
+- `PhoneService`: **No = 0, Yes = 1**
+- `gender`: **Male = 0, Female = 1**
+
+---
+
+##### Handover notes (implementation & validation)
+
+After encoding is applied in code, please verify:
+- Encoded columns are numeric (int/float)
+- No unexpected NaN introduced by mapping (commonly caused by spelling mismatch)
+- Value ranges are correct:
+  - `Contract` ∈ {0, 1, 2}
+  - `Churn` ∈ {0, 1}
+  - Binary predictors ∈ {0, 1}
+
+---
+
+##### References
+- Jira subtasks: US-2.3.1 / US-2.3.2 / US-2.3.3  
+- Confluence: Data Preparation – Variable Mapping (Ordinal/Target/Binary)
 
 #### Encoding Strategy Overview
 
