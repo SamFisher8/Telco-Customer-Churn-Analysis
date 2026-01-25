@@ -256,6 +256,28 @@ Post-encoding checks were performed to ensure data integrity:
 
 ---
 
+### Feature Scaling & Normalization (US-2.4)
+
+To prevent numerical features with larger magnitudes from disproportionately influencing the neural network, feature scaling was applied as part of the data preparation pipeline.
+
+The following numerical features were selected for normalization:
+- MonthlyCharges
+- TotalCharges
+- tenure
+
+StandardScaler from scikit-learn was used to transform these features to a common scale with zero mean and unit variance. This approach was chosen to preserve relative differences while ensuring stable and unbiased model convergence.
+
+Post-scaling verification was performed using descriptive statistics, confirming:
+- Mean values approximately equal to 0
+- Standard deviation approximately equal to 1
+- No distortion of feature distributions
+
+This step ensures numerical consistency across inputs prior to model training.
+
+
+
+
+
 #### Output Artifact
 
 The final encoded dataset is stored as: Dataset_Encoded_v1.csv
