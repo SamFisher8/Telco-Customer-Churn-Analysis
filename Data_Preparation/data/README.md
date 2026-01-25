@@ -280,7 +280,7 @@ This step ensures numerical consistency across inputs prior to model training.
 
 #### Output Artifact
 
-The final encoded dataset is stored as: Dataset_Encoded_v1.csv
+The final scaled dataset is stored as: Dataset_Scaled_v1.csv
 
 
 ## Class Imbalance Handling (US-2.5)
