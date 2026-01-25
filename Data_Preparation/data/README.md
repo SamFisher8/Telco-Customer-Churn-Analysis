@@ -315,23 +315,6 @@ Churn = 1 -> 3,959
 
 This resulted in a balanced 50/50 class distribution for model training.
 
-
-### US-2.6: Train-Test Split Generation
-
-The processed and scaled dataset was split into training and testing sets to support model development and validation by the predictive analytics team.
-
-**Details:**
-- Split ratio: 80% training / 20% testing
-- Outputs generated:
-  - `X_train.csv`
-  - `y_train.csv`
-  - `X_test.csv`
-  - `y_test.csv`
-- Location: `Data_Preparation/data/processed/`
-
-These files are intended for downstream modeling and evaluation workflows.
-
-
 ### Rationale
 
 Balancing the training data improves the model’s ability to correctly identify churned customers while maintaining a realistic evaluation environment using the original test data.
