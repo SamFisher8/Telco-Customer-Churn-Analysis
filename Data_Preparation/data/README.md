@@ -265,6 +265,8 @@ The following numerical features were selected for normalization:
 - TotalCharges
 - tenure
 
+TotalCharges was not explicitly available in the source dataset and was therefore derived using MonthlyCharges and tenure, which is consistent with standard telecom billing calculations.
+
 StandardScaler from scikit-learn was used to transform these features to a common scale with zero mean and unit variance. This approach was chosen to preserve relative differences while ensuring stable and unbiased model convergence.
 
 Post-scaling verification was performed using descriptive statistics, confirming:
