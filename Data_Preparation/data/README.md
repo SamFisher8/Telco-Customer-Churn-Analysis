@@ -319,3 +319,69 @@ This resulted in a balanced 50/50 class distribution for model training.
 
 Balancing the training data improves the model’s ability to correctly identify churned customers while maintaining a realistic evaluation environment using the original test data.
 
+
+## US-2.6: Train-Test Split Generation
+
+### Objective
+To prepare the dataset for supervised machine learning by dividing it into separate training and testing subsets. This ensures models are trained on one portion of the data and evaluated on unseen data.
+
+### Rationale
+Separating training and testing data prevents data leakage and allows realistic model evaluation. A fixed random state ensures reproducibility, and stratification preserves the original churn distribution.
+
+### Methodology
+Input dataset:
+Dataset_Scaled_v1.csv
+
+Target variable:
+Churn
+
+Split configuration:
+- Training set: 80%
+- Testing set: 20%
+- Stratified by Churn
+- random_state = 42
+
+Tool used:
+sklearn.model_selection.train_test_split
+
+### Implementation
+```python
+from sklearn.model_selection import train_test_split
+
+X = df.drop(columns=['Churn'])
+y = df['Churn']
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+
+### Outputs ###
+
+The following files were generated and saved to:
+Data_Preparation/data/processed/
+
+X_train.csv
+
+y_train.csv
+
+X_test.csv
+
+y_test.csv
+
+### Validation ### 
+
+Verified 80/20 split ratio
+
+Confirmed no data leakage
+
+Preserved class distribution via stratification
+
+### Status ###
+
+Completed
+
