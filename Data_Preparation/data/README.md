@@ -377,11 +377,11 @@ Data_Preparation/data/processed/
 
 ### Validation
 
-Verified 80/20 split ratio
+- Verified 80/20 split ratio
 
-Confirmed no data leakage
+- Confirmed no data leakage
 
-Preserved class distribution via stratification
+- Preserved class distribution via stratification
 
 ### Status
 
