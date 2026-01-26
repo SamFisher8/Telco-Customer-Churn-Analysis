@@ -358,22 +358,24 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42,
     stratify=y
 )
+```
 
-
-### Outputs ###
+### Outputs
 
 The following files were generated and saved to:
+
 Data_Preparation/data/processed/
 
-X_train.csv
 
-y_train.csv
+- X_train.csv
 
-X_test.csv
+- y_train.csv
 
-y_test.csv
+- X_test.csv
 
-### Validation ### 
+- y_test.csv
+
+### Validation
 
 Verified 80/20 split ratio
 
@@ -381,7 +383,6 @@ Confirmed no data leakage
 
 Preserved class distribution via stratification
 
-### Status ###
+### Status
 
 Completed
-
