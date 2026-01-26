@@ -1,4 +1,4 @@
-# Data Ingestion & Quality Validation
+# US 2.2 Data Ingestion & Quality Validation
 
 ## Project Context
 
@@ -111,7 +111,7 @@ The following quality checks and transformations were applied:
 Data Engineer (Internship Project)
 
 
-### Categorical Feature Encoding (Stage 4)
+### US 2.3 Categorical Feature Encoding (Stage 4)
 
 #### Objective
 Machine learning models such as **K-Means Clustering** and **Artificial Neural Networks (ANNs)** require numerical inputs. This stage converts all categorical (object-type) variables in the cleaned dataset into numeric representations while preserving semantic meaning and avoiding unintended ordinal relationships.
@@ -119,7 +119,7 @@ Machine learning models such as **K-Means Clustering** and **Artificial Neural N
 The output of this stage is a fully numeric dataset ready for modeling.
 
 ---
-#### Xinyun Dai — US-2.3 (Encoding Rules: Target / Ordinal / Binary)
+#### Xinyun Dai — (US-2.3.1- US2.3.3) Encoding Rules: Target / Ordinal / Binary
 
 This subsection records *how* I decided the encoding rules , so the team can follow the same standard during implementation and modelling.
 
@@ -192,7 +192,7 @@ After encoding is applied in code, please verify:
 - Jira subtasks: US-2.3.1 / US-2.3.2 / US-2.3.3  
 - Confluence: Data Preparation – Variable Mapping (Ordinal/Target/Binary)
 
-#### Encoding Strategy Overview
+#### Sameen Sadman (US 2.3.4-US2.3.6) Encoding Strategy Overview
 
 The dataset primarily contains **binary** and **ordinal** categorical variables. To maintain interpretability and model correctness, the following encoding strategies were applied:
 
