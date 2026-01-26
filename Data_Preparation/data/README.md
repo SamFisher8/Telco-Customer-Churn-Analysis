@@ -1,4 +1,4 @@
-# US 2.2 Data Ingestion & Quality Validation
+# US 2.2: Data Ingestion & Quality Validation
 
 ## Project Context
 
@@ -111,7 +111,7 @@ The following quality checks and transformations were applied:
 Data Engineer (Internship Project)
 
 
-### US 2.3 Categorical Feature Encoding (Stage 4)
+# US 2.3: Categorical Feature Encoding 
 
 #### Objective
 Machine learning models such as **K-Means Clustering** and **Artificial Neural Networks (ANNs)** require numerical inputs. This stage converts all categorical (object-type) variables in the cleaned dataset into numeric representations while preserving semantic meaning and avoiding unintended ordinal relationships.
@@ -119,7 +119,7 @@ Machine learning models such as **K-Means Clustering** and **Artificial Neural N
 The output of this stage is a fully numeric dataset ready for modeling.
 
 ---
-#### Xinyun Dai — (US-2.3.1- US2.3.3) Encoding Rules: Target / Ordinal / Binary
+#### Xinyun Dai — (US-2.3.1- US2.3.3): Encoding Rules: Target / Ordinal / Binary
 
 This subsection records *how* I decided the encoding rules , so the team can follow the same standard during implementation and modelling.
 
@@ -192,7 +192,7 @@ After encoding is applied in code, please verify:
 - Jira subtasks: US-2.3.1 / US-2.3.2 / US-2.3.3  
 - Confluence: Data Preparation – Variable Mapping (Ordinal/Target/Binary)
 
-#### Sameen Sadman (US 2.3.4-US2.3.6) Encoding Strategy Overview
+#### Sameen Sadman- (US 2.3.4-US2.3.6): Encoding Strategy Overview
 
 The dataset primarily contains **binary** and **ordinal** categorical variables. To maintain interpretability and model correctness, the following encoding strategies were applied:
 
@@ -256,25 +256,25 @@ Post-encoding checks were performed to ensure data integrity:
 
 ---
 
-### Feature Scaling & Normalization (US-2.4)
+# US-2.4: Feature Scaling & Normalization 
 
-To prevent numerical features with larger magnitudes from disproportionately influencing the neural network, feature scaling was applied as part of the data preparation pipeline.
+#### To prevent numerical features with larger magnitudes from disproportionately influencing the neural network, feature scaling was applied as part of the data preparation pipeline.
 
 The following numerical features were selected for normalization:
 - MonthlyCharges
 - TotalCharges
 - tenure
 
-TotalCharges was not explicitly available in the source dataset and was therefore derived using MonthlyCharges and tenure, which is consistent with standard telecom billing calculations.
+### TotalCharges was not explicitly available in the source dataset and was therefore derived using MonthlyCharges and tenure, which is consistent with standard telecom billing calculations.
 
-StandardScaler from scikit-learn was used to transform these features to a common scale with zero mean and unit variance. This approach was chosen to preserve relative differences while ensuring stable and unbiased model convergence.
+### StandardScaler from scikit-learn was used to transform these features to a common scale with zero mean and unit variance. This approach was chosen to preserve relative differences while ensuring stable and unbiased model convergence.
 
 Post-scaling verification was performed using descriptive statistics, confirming:
 - Mean values approximately equal to 0
 - Standard deviation approximately equal to 1
 - No distortion of feature distributions
 
-This step ensures numerical consistency across inputs prior to model training.
+### This step ensures numerical consistency across inputs prior to model training.
 
 
 
@@ -285,7 +285,7 @@ This step ensures numerical consistency across inputs prior to model training.
 The final scaled dataset is stored as: Dataset_Scaled_v1.csv
 
 
-## Class Imbalance Handling (US-2.5)
+# US 2.5: Class Imbalance Handling 
 
 The dataset contains a significant class imbalance in the target variable Churn, where the majority of customers do not churn. If left unaddressed, machine learning models may become biased toward predicting the majority class.
 
@@ -320,7 +320,7 @@ This resulted in a balanced 50/50 class distribution for model training.
 Balancing the training data improves the model’s ability to correctly identify churned customers while maintaining a realistic evaluation environment using the original test data.
 
 
-## US-2.6: Train-Test Split Generation
+# US 2.6: Train-Test Split Generation
 
 ### Objective
 To prepare the dataset for supervised machine learning by dividing it into separate training and testing subsets. This ensures models are trained on one portion of the data and evaluated on unseen data.
