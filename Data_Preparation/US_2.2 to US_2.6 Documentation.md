@@ -384,3 +384,101 @@ Data_Preparation/data/processed/
 ### Status
 
 Completed
+
+
+### Rutvi Nakarani: Visualization and Cluster Labelling
+
+Feature selection was performed to ensure that clustering was based on variables with strong behavioural relevance to churn.
+# Selected Features
+# Tenure
+Represents the duration (in months) that a customer has stayed with the company and is a strong indicator of cutsomer loyalty.
+
+# Monthly Charges
+Represents the monthly billing amount and reflects customer value and price sensitivity.
+
+# senior Citizen (used during exploratory analysis)
+Included to understand demographic influence during cluster interpretation.
+
+# Excluded Features
+Identifiers and low-impact demographic variables such as gender
+Service flags with weak influence on churn patterns
+
+### Data processing for clustering
+Before applying the clustering algorithm, the following preprocessing steps were completed:
+- Numerical features were standardised using StandarScaler
+- Scaling ensured that variables with larger ranges did not dominate distance calculations
+- The dataset was opyionally sampled (3,000 rows) for faster visualisation without affecting clustering logic
+- This preprocessing step was essential as K-means relies on Eucliden distance.
+
+### Optimal Cluster Identification (Elbow Method)
+To determine the optimal number of clusters, the Elbow Method was applied.
+# Process
+- K-means models were trained for cluster values ranging from 1 to 6
+- Within-CLuster Sum of Squres (WCSS) was calculated for each value of k
+- A line plot was WCSS versus number of clusters was generated
+
+# Outcome
+- A clear "elbow" was observed at k=3
+- Beyond three clusters, the reduction in WCSS became marginal
+
+# Decision
+- The optimal number of clusters was finalised as 3
+- This satisfies the requirement for justified and data-driven cluster selection.
+
+### K-Means Model Training
+- Once the optimal value of k was identified, the final clustering model was trained.
+# Model Configuration
+- Algorithm: K-Means
+- Number of clusters: 3 
+- Random state: 42 (for reproducibility)
+- Training features: tenure and Monthly Charges
+
+# Training Process
+- The model was fitted on the scaled dataset
+- Cluster labels (0,1,2) were generated for the dataset
+- Each customer was assigned to exactly one cluster
+
+# Cluster Visualisation
+To support interpretation, Principal Component Analysis (PCA) was used.
+# Visualisation Steps
+- Features space was reduced to two principal components
+- A scatter plot was generated to visualise cluster seperation
+# Observations
+- Clusters showed clear seperation in PCA space
+- Visual evidence confirmed meaningful grouping of customers
+
+### Cluster Interpretation and Summary
+A cluster summarry was created by computing mean values for each features within clusters.
+# Identified Customer Segmets
+- Cluster 0: Long-term senior customers with relatively high monthly charges
+- Cluster 1: Highly loyal customers with the longest tenure and stable charges
+- Cluster 2: New or low-tenure customers with lower monthly charges
+These segments clearly reflect different customer behaviours and churn risk levels.
+
+### Relationship Between Clusters and Churn
+Although K-Means does not directly predict churn, cluster effectiveness was validated by mapping actual churn values to clusters.
+# Key Findings
+- Customers with low tenure showed higher churn rates
+- Long-tenure customers showed significantly lower churn
+- Churn behaviour varied clearly across clusters
+This confirms that clustering successfully captured churn-related patterns.
+
+### Model Export and Reusability
+To complete the deliverables, the trained K-Means model was saved for reuse and submission.
+# Export Details
+- Formats used: pickle and joblib
+- Files generated:
+kmeans_model.pkl
+kmeans_model_joblib.pkl
+These files allow the model to be reused without retraining and ensure reproducibility.
+
+### Final Outcome
+By completing this clustering analysis, the project successfully delivered:
+- Optimal cluster identification using the Elbow Method
+- A trained K-Means clustering model
+- Visual and statistical cluster interpretation
+- Actionable customer segments linked to churn behaviour
+- A reusable and submission-ready trained model
+This phase ensures that the dataset is fully analysed and segmented, setting the stage for effective churn interpretation and future predictive modelling.
+
+
