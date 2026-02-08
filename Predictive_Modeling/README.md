@@ -41,3 +41,7 @@ The purpose of this task (US-4.1) is to define and justify the neural network st
 ## Related User Stories
 - **US-4.1**: ANN Architecture Design & Configuration  
 - **US-4.2**: Model Training & Hyperparameter Tuning
+- ## Additional Documentation
+
+- 📄 **ANN_Architecture_Design_US-4.1.docx** – Detailed architecture explanation and rationale (Word format)
+
