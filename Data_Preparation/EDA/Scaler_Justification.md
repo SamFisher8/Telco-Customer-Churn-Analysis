@@ -1,0 +1,1 @@
+Standard Scaler was kept due to absence of any extreme outliers
